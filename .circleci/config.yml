@@ -13,7 +13,6 @@ jobs:
           name: echo
           command: echo "This config is defined in NEW-trigger-repo"
 
-
 workflows:
   shared-config-repo:
     jobs:
