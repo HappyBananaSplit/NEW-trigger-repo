@@ -21,10 +21,15 @@ jobs:
           command: echo << pipeline.event.action >>
 
 workflows:
-  conditional-workflow:
+  runs-only-on-pull-request:
     when:
       or:
         - << pipeline.event.name >> == "pull_request" and << pipeline.event.action >> == "labeled"
         - << pipeline.event.name >> == "pull_request" and << pipeline.event.action >> == "synchronize"
     jobs:
       - my_job
+  runs-on-all-pushes:
+    jobs:
+      - my_job
+
+  
