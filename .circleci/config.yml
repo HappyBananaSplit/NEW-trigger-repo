@@ -15,10 +15,10 @@ jobs:
       #     command: echo "This config is defined in NEW-trigger-repo"
       - run:
           name: event.name
-          command: << pipeline.event.name >>
+          command: echo << pipeline.event.name >>
       - run:
           name: event.action
-          command: << pipeline.event.action >>
+          command: echo << pipeline.event.action >>
 
 workflows:
   conditional-workflow:
