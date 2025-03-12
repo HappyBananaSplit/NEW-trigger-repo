@@ -25,5 +25,9 @@ workflows:
     when: (pipeline.event.name == "pull_request" and pipeline.event.action == "labeled") or (pipeline.event.name == "pull_request" and pipeline.event.action == "synchronize")
     jobs:
       - my_job
+  runs-only-on-push:
+    when: pipeline.event.name == "push" 
+    jobs:
+      - my_job
 
   
