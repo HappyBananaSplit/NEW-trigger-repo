@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  myjob:
+    docker:
+      - image: cimg/node:17.9.1
+    steps:
+      - checkout
+      - run:
+          name: cat README
+          command: cat README.md
+
+workflows:
+  teardown:
+    jobs:
+      - myjob
