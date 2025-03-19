@@ -14,6 +14,6 @@ jobs:
           command: echo "This config is defined in NEW-trigger-repo"
 
 workflows:
-  config-defined-in-trigger-repo:
+  do_some_stuff:
     jobs:
       - myjob
