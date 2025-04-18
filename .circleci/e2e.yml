@@ -7,8 +7,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: cat README
-          command: cat README.md
+          name: cat "auto-tag"
+          command: cat "auto-tag"
 
 workflows:
   end_to_end_tests:
