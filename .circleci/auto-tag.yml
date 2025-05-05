@@ -1,28 +1,22 @@
 version: 2.1
 
 jobs:
-  myjob:
+  hello-job:
     docker:
-      - image: cimg/node:17.9.1
+      - image: cimg/node:17.2.0
     steps:
       - checkout
-      - run:
-          name: cat "auto-tag"
-          command: |
-            echo "auto-tag"
-            echo <<pipeline.event.name>>
-            echo <<pipeline.event.github.head_commit.url>>
-            echo <<pipeline.git.revision>>
-            echo <<pipeline.git.commit.url>>
-      
+      - run: echo "TRIGGER REPO"
 
 workflows:
-  end_to_end_tests:
+  my-workflow:
     jobs:
-      - myjob:
+      - hello-job
+  tagged-build:
+    jobs:
+      - hello-job:
           filters:
             tags:
               only: /^v.*/
             branches:
               ignore: /.*/
-      
