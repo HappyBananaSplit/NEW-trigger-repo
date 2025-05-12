@@ -1,20 +1,44 @@
+setup: false
 version: 2.1
 
-jobs:
-  myjob:
+orbs:
+  cli: circleci/circleci-cli@0.1.9
+
+executors:
+  base:
     docker:
-      - image: cimg/node:17.9.1
+      - image: cibuilds/hugo:0.142
+
+workflows:
+  author-feedback:
+    # dont run on tags or main
+    when: 
+        (pipeline.git.tag == "" or not pipeline.git.tag ) and
+        pipeline.git.branch != "main" and
+        pipeline.event.context.github.pr_url == false
+    jobs:
+      - validate-configs
+      - build-html:
+          name: Build Hugo site in Caddy Container
+          requires:
+            [validate-configs]
+
+jobs:
+  validate-configs:
+    executor: cli/default
     steps:
       - checkout
       - run:
-          name: cat README
-          command: cat README.md
-      - run:
-          name: echo
-          command: echo "This config is defined in NEW-trigger-repo"
+          name: Validate Configs with CLI
+          command: bash .circleci/validate_configs.sh
 
-workflows:
-  do_some_stuff:
-    jobs:
-      - myjob
-
+  build-html:
+    executor: base
+    steps:
+      - checkout
+      - run: |
+          hugo build -s src -d ../caddy/docs 
+      - setup_remote_docker
+      - run: |
+          #no tag, no push ,just verify build works
+          docker build caddy/ 
