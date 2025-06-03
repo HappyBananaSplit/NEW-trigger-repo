@@ -4,9 +4,6 @@ parameters:
   image-tag:
     type: string
     default: "current"
-  something-else:
-    type: int
-    default: 5
   and-another:
     type: enum
     enum: ["env-a", "env-b", "env-c", "env-d"]
