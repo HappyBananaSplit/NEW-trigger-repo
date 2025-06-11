@@ -10,11 +10,11 @@ jobs:
 
 workflows:
   my-workflow:
+    when: pipeline.event.pull_request.draft == false
     jobs:
       - hello-job
   tagged-build:
     jobs:
       - hello-job:
           filters:
-            tags:
-              only: /.*-release/
+            version: 2.1
