@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  hello-job:
+  my-job:
     docker:
       - image: cimg/node:17.2.0
     steps:
