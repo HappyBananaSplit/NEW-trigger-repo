@@ -10,11 +10,6 @@ jobs:
 
 workflows:
   my-workflow:
-    when: pipeline.event.pull_request.draft == false
+    when: pipeline.event.name == "api" or (pipeline.event.name == "pull_request" and pipeline.event.github.pull_request.draft == false)
     jobs:
-      - hello-job
-  tagged-build:
-    jobs:
-      - hello-job:
-          filters:
-            version: 2.1
+      - my-job
