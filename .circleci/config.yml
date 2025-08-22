@@ -6,6 +6,7 @@ parameters:
     default: "current"
   and-another:
     type: enum
+    default: "env-a"
     enum: ["env-a", "env-b", "env-c", "env-d"]
 
 jobs:
