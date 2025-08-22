@@ -18,3 +18,4 @@ workflows:
     when: pipeline.event.name == "push" or pipeline.event.name == "api" or (pipeline.event.name == "pull_request" and pipeline.event.github.pull_request.draft == false and pipeline.event.github.pull_request.base.ref == "main")
     jobs:
       - myjob
+
