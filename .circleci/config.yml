@@ -1,5 +1,10 @@
 version: 2.1
 
+parameters:
+  workflow-filter-based-only-on-parameters:
+    type: boolean
+    default: false
+    
 jobs:
   myjob:
     docker:
@@ -15,7 +20,7 @@ jobs:
 
 workflows:
   do_some_stuff:
-    when: pipeline.event.name == "push" or pipeline.event.name == "api" or (pipeline.event.name == "pull_request" and pipeline.event.github.pull_request.draft == false and pipeline.event.github.pull_request.base.ref == "main")
+    when: pipeline.parameters.workflow-filter-based-only-on-parameters == false and (pipeline.event.name == "api" or (pipeline.event.name == "pull_request" and pipeline.event.github.pull_request.draft == false))
     jobs:
       - myjob
 
