@@ -12,8 +12,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: cat README
-          command: cat README.md
+          name: Print CIRCLE_PULL_REQUEST
+          command: echo "Pull Request URL: $CIRCLE_PULL_REQUEST"
       - run:
           name: echo
           command: echo "This config is defined in NEW-trigger-repo"
