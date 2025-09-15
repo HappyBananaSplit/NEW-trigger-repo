@@ -20,7 +20,7 @@ jobs:
 
 workflows:
   do_some_stuff:
-    # when: pipeline.parameters.workflow-filter-based-only-on-parameters == false and (pipeline.event.name == "api" or (pipeline.event.name == "pull_request" and pipeline.event.github.pull_request.draft == false))
+    when: pipeline.parameters.workflow-filter-based-only-on-parameters == false and (pipeline.event.name == "api" or (pipeline.event.name == "pull_request" and pipeline.event.github.pull_request.draft == false))
     jobs:
       - myjob
 
