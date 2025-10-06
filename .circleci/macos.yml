@@ -1,0 +1,20 @@
+version: 2.1
+
+jobs:
+  build:
+    macos:
+      xcode: 16.4.0  # Specify Xcode version
+    # resource_class: macos.m1.large.gen1  # Apple Silicon M1 with more resources
+    steps:
+      - checkout
+      - run:
+          name: Show macOS version
+          command: sw_vers
+      - run:
+          name: Show Xcode version
+          command: xcodebuild -version
+
+workflows:
+  build-and-test:
+    jobs:
+      - build
