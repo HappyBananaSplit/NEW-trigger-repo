@@ -7,8 +7,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: cat "auto-tag"
-          command: cat "auto-tag"
+          name: something
+          command: echo "hello"
 
 workflows:
   end_to_end_tests:
