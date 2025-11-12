@@ -23,6 +23,3 @@ workflows:
     when: pipeline.event.name == "pull_request" and pipeline.event.github.pull_request.draft == false
     jobs:
       - myjob
-
-
-
