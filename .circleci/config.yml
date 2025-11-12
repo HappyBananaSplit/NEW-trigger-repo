@@ -20,6 +20,6 @@ jobs:
 
 workflows:
   do_some_stuff:
-    when: pipeline.event.name == "pull_request" and pipeline.event.github.pull_request.draft == false
+    when: pipeline.event.github.pull_request.draft == false
     jobs:
       - myjob
