@@ -7,10 +7,9 @@ jobs:
     steps:
       - checkout
       - run: echo "TRIGGER REPO"
-
 workflows:
   my-workflow:
-    jobs:
+    jrobs:
       - hello-job
   tagged-build:
     jobs:
