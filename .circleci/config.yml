@@ -14,12 +14,15 @@ jobs:
       - run:
           name: cat README
           command: cat README.md
+      - run:  
+          name: sleep  
+          command: sleep 1000
       - run:
           name: echo
           command: echo "This config is defined in NEW-trigger-repo"
 
 workflows:
   do_some_stuff:
-    when: pipeline.event.github.pull_request.draft == false
+    # when: pipeline.event.github.pull_request.draft == false
     jobs:
       - myjob
