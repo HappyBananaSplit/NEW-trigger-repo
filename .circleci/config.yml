@@ -5,7 +5,7 @@ parameters:
     type: boolean
     default: false
     
-jobs:
+jobssd:
   myjob:
     docker:
       - image: cimg/node:17.9.1
