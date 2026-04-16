@@ -20,9 +20,9 @@ jobs:
       - run:
           name: cat README
           command: cat README.md
-      - run:  
-          name: sleep  
-          command: sleep 1000
+      # - run:  
+      #     name: sleep  
+      #     command: sleep 1000
       - run:
           name: echo
           command: echo <pipeline.parameters.another>
